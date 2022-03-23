@@ -1,56 +1,27 @@
-# getting-started Project
+# CI-CD Workflow Project
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+App:
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+* Made with Quarkus (with Java 11 and Maven)
 
-## Running the application in dev mode
+CI:
 
-You can run your application in dev mode that enables live coding using:
-```shell script
-./mvnw compile quarkus:dev
-```
+* Jenkins
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
+Container:
 
-## Packaging and running the application
+Container with Docker
 
-The application can be packaged using:
-```shell script
-./mvnw package
-```
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
+![image](https://miro.medium.com/max/1400/1*bQs7kGuHjLfgXEJPxhzzuw.png)
 
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
+Container with Jib
 
-If you want to build an _über-jar_, execute the following command:
-```shell script
-./mvnw package -Dquarkus.package.type=uber-jar
-```
+![image2](https://miro.medium.com/max/1400/1*qUy0Mpj0_phRwBbo1kxLPg.png)
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
+Default image base for Jib method:
 
-## Creating a native executable
+* fabric8/java-alpine-openjdk11-jre
 
-You can create a native executable using: 
-```shell script
-./mvnw package -Pnative
-```
+Execute for create the docker image:
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
-```shell script
-./mvnw package -Pnative -Dquarkus.native.container-build=true
-```
-
-You can then execute your native executable with: `./target/getting-started-1.0.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.
-
-## Provided Code
-
-### RESTEasy JAX-RS
-
-Easily start your RESTful Web Services
-
-[Related guide section...](https://quarkus.io/guides/getting-started#the-jax-rs-resources)
+`./mvnw clean package -Dquarkus.container-image.build=true`
