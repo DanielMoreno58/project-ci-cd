@@ -2,7 +2,7 @@ name: project_ci_cd
 
 on:
   push:
-    branches: [ dev ]
+    branches: [ feature/github_workflow ]
 
 jobs:
   CI:
