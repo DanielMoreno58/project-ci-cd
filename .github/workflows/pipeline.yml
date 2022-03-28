@@ -1,0 +1,17 @@
+name: project_ci_cd
+
+on:
+  push:
+    branches: [ dev ]
+
+jobs:
+  CI:
+
+    runs-on: ubuntu-latest  
+
+    steps:
+    - name: Dockerization
+      run: docker -v
+      run: docker compose build
+      run: docker tag project_ci_cd:latest username/project_ci_cd:${{ github.run_id }}
+   
