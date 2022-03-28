@@ -10,8 +10,10 @@ jobs:
     runs-on: ubuntu-latest  
 
     steps:
-    - name: Dockerization
+    - name: docker version
       run: docker -v
+    - name: docker build
       run: docker compose build
+    - name: docker tag
       run: docker tag project_ci_cd:latest username/project_ci_cd:${{ github.run_id }}
    
